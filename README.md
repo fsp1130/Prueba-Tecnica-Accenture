@@ -102,5 +102,53 @@ Asegúrate de que el contenedor esté corriendo con el puerto 8080 expuesto, y q
 Frank Esteban Soto Paz
 Prueba técnica para Accenture - Backend Java Developer
 
+##  FUNCIONAMIENTO
+### Crear BD y registrar una nueva franquicia.
 
+Se corre el proyecto y crea las tablas segun las entidades 
+![img_1.png](img_1.png)
+
+Se agrega por postman una franquicia: 
+![img_2.png](img_2.png)
+
+En Bd 
+![img_3.png](img_3.png)
+
+Se crea una surcursal 
+
+![img_4.png](img_4.png)
+
+Se crea surcursal y Producto 
+![img_5.png](img_5.png)
+
+![img_6.png](img_6.png)
+
+## Se realizan los actualizar franquicia surcursal y stock
+
+Franquicia
+![img_7.png](img_7.png)
+
+Surcursal 
+![img_8.png](img_8.png)
+
+
+![img_9.png](img_9.png)
+
+Stock
+Se le envia 200 de stock nuevo 
+![img_10.png](img_10.png)
+
+![img_11.png](img_11.png)
+
+Se listan los productos con mas stock en surcursales 
 ![img.png](img.png)
+
+Borrar un Producto 
+ ![img_12.png](img_12.png)
+
+![img_13.png](img_13.png)
+
+### IMAGEN EN DOCKER
+
+![img_14.png](img_14.png)
+
