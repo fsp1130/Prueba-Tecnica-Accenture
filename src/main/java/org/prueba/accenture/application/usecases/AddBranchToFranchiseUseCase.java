@@ -27,10 +27,8 @@ public class AddBranchToFranchiseUseCase {
             if (franchise.getBranches() == null) {
                 franchise.setBranches(new ArrayList<>());
             }
-
             // Relación inversa (importante si usas JPA bidireccional)
             //branch.setFranchise(franchise);
-
             // Agregar la sucursal
             franchise.getBranches().add(branch);
 

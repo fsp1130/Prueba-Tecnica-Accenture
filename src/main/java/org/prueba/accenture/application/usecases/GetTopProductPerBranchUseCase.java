@@ -21,7 +21,6 @@ public class GetTopProductPerBranchUseCase {
     public List<ProductEntity> execute(Long franquiciaId) {
         List<ProductEntity> allProducts = productRepository.findByBranchFranquiciaId(franquiciaId);
 
-
         // Agrupar por sucursal y seleccionar el producto con mayor stock
         Map<BranchEntity, Optional<ProductEntity>> topPerBranch = allProducts.stream()
                 .collect(Collectors.groupingBy(

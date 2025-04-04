@@ -19,17 +19,14 @@ public class BranchMapper {
         BranchEntity entity = new BranchEntity();
         entity.setId(branch.getId());
         entity.setName(branch.getName());
-        entity.setFranquicia(franquiciaEntity); // 👈 setear la relación
+        entity.setFranquicia(franquiciaEntity);
 
         if (branch.getProducts() != null) {
-            entity.setProducts( // ✅ Correcto
+            entity.setProducts(
                     branch.getProducts().stream()
-                            .map(p -> ProductMapper.toEntity(p, entity)) // le pasas la branch también
+                            .map(p -> ProductMapper.toEntity(p, entity))
                             .collect(Collectors.toList())
             );
-
-            // Ya no necesitas esta línea si el mapper ya le asigna la branch:
-            // entity.getProducts().forEach(p -> p.setBranch(entity));
         }
 
 

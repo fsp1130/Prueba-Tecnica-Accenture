@@ -17,7 +17,7 @@ public class FranchiseMapper {
         if (franchise.getBranches() != null) {
             entity.setSucursales(
                     franchise.getBranches().stream()
-                            .map(branch -> BranchMapper.toEntity(branch, entity)) // ✅ lambda en lugar de ::
+                            .map(branch -> BranchMapper.toEntity(branch, entity))
                             .collect(Collectors.toList())
             );
         }

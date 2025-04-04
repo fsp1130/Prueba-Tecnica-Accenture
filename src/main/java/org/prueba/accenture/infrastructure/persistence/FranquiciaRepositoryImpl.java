@@ -28,12 +28,12 @@ public class FranquiciaRepositoryImpl implements FranchiseRepository {
             entity = jpaRepository.findById(franquicia.getId()).orElseThrow();
             entity.setName(franquicia.getName());
 
-            // ⚠️ Limpia y vuelve a setear las sucursales (manteniendo relación inversa)
+
             entity.getSucursales().clear();
             if (franquicia.getBranches() != null) {
                 entity.getSucursales().addAll(
                         franquicia.getBranches().stream()
-                                .map(branch -> BranchMapper.toEntity(branch, entity)) // 👈 importante pasar franquicia
+                                .map(branch -> BranchMapper.toEntity(branch, entity))
                                 .collect(Collectors.toList())
                 );
             }

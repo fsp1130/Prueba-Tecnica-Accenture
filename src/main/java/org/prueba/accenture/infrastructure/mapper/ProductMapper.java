@@ -10,7 +10,7 @@ public class ProductMapper {
 
 
     public static ProductEntity toEntity(Product product) {
-        return toEntity(product, null); // BranchEntity queda null en este caso
+        return toEntity(product, null);
     }
     // Mapea un Product a ProductEntity, incluyendo la relación con BranchEntity
     public static ProductEntity toEntity(Product product, BranchEntity branchEntity) {

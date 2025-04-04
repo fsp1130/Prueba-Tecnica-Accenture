@@ -1,0 +1,268 @@
+openapi: 3.0.3
+info:
+  title: API Prueba Técnica Accenture
+  description: API para gestión de franquicias, sucursales y productos.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /api/franquicias:
+    post:
+      summary: Crear una nueva franquicia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Franchise'
+      responses:
+        '200':
+          description: Franquicia creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Franchise'
+
+  /api/franquicias/{id}/sucursales:
+    post:
+      summary: Agregar una sucursal a una franquicia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      responses:
+        '200':
+          description: Sucursal agregada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Franchise'
+
+  /api/franquicias/{id}/nombre:
+    put:
+      summary: Actualizar nombre de una franquicia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newName:
+                  type: string
+      responses:
+        '200':
+          description: Nombre actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Franchise'
+
+  /api/productos/top-stock/{franquiciaId}:
+    get:
+      summary: Obtener productos con más stock en una franquicia
+      parameters:
+        - name: franquiciaId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductEntity'
+
+  /api/productos/{id}/nombre:
+    put:
+      summary: Actualizar el nombre de un producto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newName:
+                  type: string
+      responses:
+        '200':
+          description: Producto actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /api/productos/{id}/stock:
+    put:
+      summary: Actualizar el stock de un producto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: nuevoStock
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Stock actualizado
+
+  /api/productos/top-por-sucursal/{franquiciaId}:
+    get:
+      summary: Obtener top productos por sucursal
+      parameters:
+        - name: franquiciaId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de productos por sucursal
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductEntity'
+
+  /api/sucursales/{id}/productos:
+    post:
+      summary: Agregar producto a una sucursal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Producto agregado a sucursal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+
+  /api/sucursales/{sucursalId}/productos/{productoId}:
+    delete:
+      summary: Eliminar producto de una sucursal
+      parameters:
+        - name: sucursalId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: productoId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Producto eliminado exitosamente
+
+  /api/sucursales/{id}/nombre:
+    put:
+      summary: Actualizar nombre de sucursal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newName:
+                  type: string
+      responses:
+        '200':
+          description: Nombre de sucursal actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+
+components:
+  schemas:
+    Franchise:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        branches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Branch'
+
+    Branch:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        stock:
+          type: integer
+
+    ProductEntity:
+      allOf:
+        - $ref: '#/components/schemas/Product'
+        - type: object
+          properties:
+            branchId:
+              type: integer
