@@ -18,9 +18,9 @@ public class Branch {
         return name;
     }
 
-    // Getter para obtener la lista de productos
+
     public List<Product> getProducts() {
-        return new ArrayList<>(products); // Devuelve una copia para evitar modificaciones externas
+        return new ArrayList<>(products);
     }
     public void setId(Long id) {
         this.id = id;
@@ -30,16 +30,14 @@ public class Branch {
         this.name = name;
     }
 
-    // Setter para la lista de productos (si necesitas establecer la lista completa)
     public void setProducts(List<Product> products) {
         if (products == null) {
-            this.products = new ArrayList<>(); // Evita asignar null a la lista
+            this.products = new ArrayList<>();
         } else {
-            this.products = new ArrayList<>(products); // Crea una nueva lista mutable
+            this.products = new ArrayList<>(products);
         }
     }
 
-    // Constructor con inicialización
     public Branch(Long id, String name, List<Product> products) {
         this.id = id;
         this.name = name;

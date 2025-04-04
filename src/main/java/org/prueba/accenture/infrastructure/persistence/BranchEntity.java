@@ -14,7 +14,7 @@ public class BranchEntity {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "franquicia_id") // Ajusta según el nombre real de la columna
+    @JoinColumn(name = "franquicia_id")
     private FranquiciaEntity franquicia;
 
     @OneToMany(mappedBy = "branch", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)

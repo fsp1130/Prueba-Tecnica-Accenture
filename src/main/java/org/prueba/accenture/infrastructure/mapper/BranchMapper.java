@@ -32,8 +32,6 @@ public class BranchMapper {
 
         return entity;
     }
-
-    // También puedes tener el inverso
     public static Branch toDomain(BranchEntity entity) {
         if (entity == null) return null;
 

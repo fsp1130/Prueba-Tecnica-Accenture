@@ -12,14 +12,11 @@ public class UpdateProductStockUseCase {
     public UpdateProductStockUseCase(JpaProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
     public void execute(Long productId, int newStock) {
         ProductEntity product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
         product.setStock(newStock);
-
-        // Verificación opcional del branch si fuera necesario
         if (product.getBranch() == null) {
             throw new RuntimeException("El producto no tiene una sucursal asignada");
         }

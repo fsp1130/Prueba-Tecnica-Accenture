@@ -22,17 +22,11 @@ public class AddBranchToFranchiseUseCase {
 
         if (franchiseOptional.isPresent()) {
             Franchise franchise = franchiseOptional.get();
-
-            // ⚠️ Inicializa la lista si viene null
             if (franchise.getBranches() == null) {
                 franchise.setBranches(new ArrayList<>());
             }
-            // Relación inversa (importante si usas JPA bidireccional)
-            //branch.setFranchise(franchise);
-            // Agregar la sucursal
             franchise.getBranches().add(branch);
 
-            // Guardar la franquicia (y la sucursal, si usas CascadeType.ALL)
             return franchiseRepository.save(franchise);
         }
 

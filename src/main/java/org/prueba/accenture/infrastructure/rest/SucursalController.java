@@ -25,8 +25,8 @@ public class SucursalController {
     private final RemoveProductFromBranchUseCase removeProductFromBranchUseCase;
     private final UpdateBranchNameUseCase updateBranchNameUseCase;
     private final UpdateProductStockUseCase updateProductStockUseCase;
-    private final ProductMapper productMapper;  // Inyectar el ProductMapper
-    private final BranchRepository branchRepository; // Para obtener la BranchEntity
+    private final ProductMapper productMapper;
+    private final BranchRepository branchRepository;
 
 
     @Autowired
@@ -35,7 +35,7 @@ public class SucursalController {
                               UpdateProductStockUseCase updateProductStockUseCase,
                               ProductMapper productMapper,
                               BranchRepository branchRepository,
-                              UpdateBranchNameUseCase updateBranchNameUseCase) {  // Inyección de BranchRepository
+                              UpdateBranchNameUseCase updateBranchNameUseCase) {
         this.addProductToBranchUseCase = addProductToBranchUseCase;
         this.removeProductFromBranchUseCase = removeProductFromBranchUseCase;
         this.updateProductStockUseCase = updateProductStockUseCase;

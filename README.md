@@ -31,7 +31,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 
-> ⚠ Usa `host.docker.internal` para que tu contenedor Docker pueda acceder a la base de datos en tu máquina local (solo en Docker para Windows/Mac).
+> Usa `host.docker.internal` para que tu contenedor Docker pueda acceder a la base de datos en tu máquina local (solo en Docker para Windows/Mac).
 
 ---
 
@@ -101,3 +101,6 @@ Asegúrate de que el contenedor esté corriendo con el puerto 8080 expuesto, y q
 
 Frank Esteban Soto Paz
 Prueba técnica para Accenture - Backend Java Developer
+
+
+![img.png](img.png)

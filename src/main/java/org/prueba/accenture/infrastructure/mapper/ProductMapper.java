@@ -12,7 +12,6 @@ public class ProductMapper {
     public static ProductEntity toEntity(Product product) {
         return toEntity(product, null);
     }
-    // Mapea un Product a ProductEntity, incluyendo la relación con BranchEntity
     public static ProductEntity toEntity(Product product, BranchEntity branchEntity) {
         if (product == null) return null;
 
@@ -20,11 +19,10 @@ public class ProductMapper {
         entity.setId(product.getId());
         entity.setName(product.getName());
         entity.setStock(product.getStock());
-        entity.setBranch(branchEntity); // Mantener la relación inversa con BranchEntity
+        entity.setBranch(branchEntity);
         return entity;
     }
 
-    // Mapea un ProductEntity a Product
     public static Product toDomain(ProductEntity entity) {
         if (entity == null) return null;
 

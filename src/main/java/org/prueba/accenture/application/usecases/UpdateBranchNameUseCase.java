@@ -14,7 +14,6 @@ public class UpdateBranchNameUseCase {
     public UpdateBranchNameUseCase(BranchRepository branchRepository) {
         this.branchRepository = branchRepository;
     }
-
     public Branch execute(Long branchId, String newName) {
         Optional<Branch> optionalBranch = branchRepository.findById(branchId);
 

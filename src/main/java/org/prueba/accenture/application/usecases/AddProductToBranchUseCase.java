@@ -42,22 +42,16 @@ public class AddProductToBranchUseCase {
         if (branchEntityOptional.isPresent()) {
             BranchEntity branchEntity = branchEntityOptional.get();
 
-            // Mapear BranchEntity a Branch (con el mapper)
             Branch branch = branchMapper.toDomain(branchEntity);
 
-            // Mapear el Product a ProductEntity
             ProductEntity productEntity = productMapper.toEntity(product, branchEntity);
 
-            // Asociar el ProductEntity con la BranchEntity
             productEntity.setBranch(branchEntity);
 
-            // Guardar el ProductEntity en la base de datos
             jpaProductRepository.save(productEntity);
 
-            // Agregar el ProductEntity a la lista de productos de la BranchEntity
             branchEntity.getProducts().add(productEntity);
 
-            // Guardar la sucursal con el producto agregado
             jpaBranchRepository.save(branchEntity);
 
             return branch;

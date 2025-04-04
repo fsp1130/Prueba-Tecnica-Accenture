@@ -23,7 +23,6 @@ public class FranquiciaRepositoryImpl implements FranchiseRepository {
     public Franchise save(Franchise franquicia) {
         FranquiciaEntity entity;
 
-        // Si ya existe, actualizamos (para evitar que se inserte una nueva vacía)
         if (franquicia.getId() != null && jpaRepository.existsById(franquicia.getId())) {
             entity = jpaRepository.findById(franquicia.getId()).orElseThrow();
             entity.setName(franquicia.getName());
@@ -39,7 +38,7 @@ public class FranquiciaRepositoryImpl implements FranchiseRepository {
             }
 
         } else {
-            // Nuevo registro
+
             entity = FranchiseMapper.toEntity(franquicia);
         }
 

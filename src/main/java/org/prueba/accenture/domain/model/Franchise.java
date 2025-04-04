@@ -36,5 +36,5 @@ public class Franchise {
         this.id = id;
         this.name = name;
     }
-// Constructor, getters y setters
+
 }

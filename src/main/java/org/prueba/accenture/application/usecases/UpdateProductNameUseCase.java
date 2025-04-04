@@ -14,14 +14,12 @@ public class UpdateProductNameUseCase {
     public UpdateProductNameUseCase(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
     public Product execute(Long productId, String newName) {
         Optional<Product> optionalProduct = productRepository.findById(productId);
 
         if (optionalProduct.isEmpty()) {
             throw new RuntimeException("Producto no encontrado con ID: " + productId);
         }
-
         Product product = optionalProduct.get();
         product.setName(newName);
 
